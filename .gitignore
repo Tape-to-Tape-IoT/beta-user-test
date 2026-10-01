@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# beta-challenge
+config.toml
+output/*
+!output/.gitkeep
+state/*
+!state/.gitkeep

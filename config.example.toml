@@ -1,0 +1,9 @@
+# Copy this file to config.toml, then replace every placeholder.
+# Text values go in double quotes; numbers do not.
+port = 8081
+api_key = "PASTE_YOUR_KEY_HERE"
+discord_username = "CHANGE_ME"
+pi_model = "CHANGE_ME"
+display_cols = 0
+display_rows = 0
+nhl_team = "CHANGE_ME"
