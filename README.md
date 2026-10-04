@@ -19,7 +19,7 @@ We reserve the right to remove you from the closed beta at any time.
 
 ## Expectations
 - You are capable of using a command line interface (CLI)
-- You are able to connect to your Raspberry Pi using SSH
+- You are able to connect to your Raspberry Pi via SSH
 - You have a GitHub account and know how to open and fill in GitHub issues
 - You are able to think things through and find solutions on your own (Google search or AI allowed).
 - You are capable of following instructions and respecting established rules.
@@ -75,7 +75,6 @@ computer.
 3. Create your own config from the example:
 
    ```bash
-   cd ~/app
    cp config.example.toml config.toml
    ```
 
