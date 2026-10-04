@@ -37,7 +37,7 @@ EXAMPLES = {
     "nhl_team": '"MTL"',
 }
 
-DISCORD_RE = re.compile(r"^[a-z0-9_.]{2,32}$")
+DISCORD_RE = re.compile(r"^[A-Za-z0-9_.]{2,32}$")
 QUOTE_HINT = 'Text values need double quotes, e.g. nhl_team = "MTL"'
 
 
@@ -185,7 +185,7 @@ def _rule_discord(value):
         return _placeholder(value), None
     if not DISCORD_RE.match(value) or ".." in value:
         return ('%s is not a valid Discord username. Expected 2-32 characters: '
-                'lowercase letters, digits, _ and . (no "..")' % show(value)), None
+                'letters, digits, _ and . (no "..")' % show(value)), None
     return None, value
 
 

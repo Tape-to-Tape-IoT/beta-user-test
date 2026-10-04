@@ -141,9 +141,9 @@ class ValidationTests(unittest.TestCase):
             self.assertNotIn("marker", message)
 
     def test_discord_username(self):
-        for ok in ("ab", "a" * 32, "your.name_1", "_x_"):
+        for ok in ("ab", "a" * 32, "your.name_1", "_x_", "Yourname", "YOUR.Name_1"):
             self.assertValid("discord_username", ok)
-        for bad in ("a", "a" * 33, "Yourname", "name#1234", "a..b", "with space",
+        for bad in ("a", "a" * 33, "name#1234", "a..b", "with space",
                     "", "CHANGE_ME", 42):
             self.assertInvalid("discord_username", bad)
 

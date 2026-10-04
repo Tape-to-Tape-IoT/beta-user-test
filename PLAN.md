@@ -82,7 +82,7 @@ nhl\_team = "CHANGE\_ME"
 |-|-|-|-|-|
 |`port`|integer|1024–65535, default 8081 if missing|no|yes|
 |`api\_key`|text|required, not empty, not the placeholder|**never**|only `set` / `missing`|
-|`discord\_username`|text|2–32 chars; lowercase letters, digits, `\_` and `.`; no `..`|yes|yes|
+|`discord\_username`|text|2–32 chars; letters (either case), digits, `\_` and `.`; no `..`|yes|yes|
 |`pi\_model`|text|not empty, max 60 chars; compared with the detected model (warning only)|yes|yes|
 |`display\_cols`|integer|1–4096|yes|yes|
 |`display\_rows`|integer|1–4096|yes|yes|
@@ -448,7 +448,7 @@ The spec uses the defaults below; change any of them before building.
 |-|-|
 |Meaning of `display\_cols` / `display\_rows`|Your project's display dimensions (e.g. a 64 × 32 LED matrix); only whole numbers 1–4096 are checked|
 |Headline case|Uppercase, classic meme style|
-|Discord username rules|Current Discord format only (lowercase, digits, `\_`, `.`); old `name#1234` tags rejected|
+|Discord username rules|Current Discord format (letters, digits, `\_`, `.`), capitals allowed; old `name#1234` tags rejected|
 |Check-in endpoint|Off; `api\_key` is still required so candidates practise handling a secret|
 |Card colors|Dark panel `#14171C`, white text, grey labels|
 |Template images|You supply them in `templates/`; a gradient placeholder is used if the folder is empty|
