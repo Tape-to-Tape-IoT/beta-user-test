@@ -9,7 +9,13 @@ and the personal API key we sent you. Work over SSH or with a keyboard and scree
 
 ## Steps
 
-1. Clone this repository into `~/app` on your Pi.
+1. Clone this repository into `~/app` on your Pi:
+
+   ```bash
+   git clone https://github.com/Tape-to-Tape-IoT/beta-user-test.git ~/app
+   ```
+
+   If `git` is missing, install it first with `sudo apt install git`.
 2. Create a Python virtual environment in `~/app` and install the dependencies into it
    (recent Raspberry Pi OS versions block system-wide `pip install`):
 
@@ -43,10 +49,76 @@ and the personal API key we sent you. Work over SSH or with a keyboard and scree
    - starts automatically when the Pi boots
    - restarts whenever the app process stops
    - writes all its output to `/var/log/app/app.log`
+
+   Install supervisor and make sure it starts on boot:
+
+   ```bash
+   sudo apt update
+   sudo apt install -y supervisor
+   sudo systemctl enable --now supervisor
+   ```
+
+   Create the log directory. Supervisor won't create it, and the program fails to start
+   without it:
+
+   ```bash
+   sudo mkdir -p /var/log/app
+   ```
+
+   Create the program file with `sudo nano /etc/supervisor/conf.d/app.conf`. Replace `pi`
+   with your own username (run `whoami`) in all four places:
+
+   ```ini
+   [program:app]
+   command=/home/pi/app/venv/bin/python3 app.py
+   directory=/home/pi/app
+   user=pi
+   environment=HOME="/home/pi"
+   autostart=true
+   autorestart=true
+   stdout_logfile=/var/log/app/app.log
+   redirect_stderr=true
+   ```
+
+   - `autorestart=true` is required. The app exits with code 0 on a clean stop, and
+     supervisor's default setting doesn't restart a program that exits with code 0.
+   - `redirect_stderr=true` sends error output to the same log file.
+   - Paths must be absolute. Supervisor doesn't expand `~`.
+
+   Load the program:
+
+   ```bash
+   sudo supervisorctl reread
+   sudo supervisorctl update
+   ```
+
+   `sudo supervisorctl status app` should say `RUNNING`. If it says `FATAL` or `BACKOFF`,
+   run `sudo supervisorctl tail app` and `sudo tail /var/log/supervisor/supervisord.log`
+   to see why.
 6. Check that `curl localhost:8081/health` returns `ok`.
 7. Prove it recovers:
-   - find the app's process ID and `kill` it; confirm it comes back
-   - reboot the Pi; confirm it comes back
+   - Find the app's process ID and `kill` it, then confirm it comes back:
+
+     ```bash
+     sudo supervisorctl pid app
+     kill <pid>
+     sudo supervisorctl status app
+     ```
+
+     Replace `<pid>` with the number the first command printed. The status should say
+     `RUNNING` again, with a different pid and an uptime of a few seconds.
+   - Reboot the Pi, then confirm it comes back:
+
+     ```bash
+     sudo reboot
+     ```
+
+     Once the Pi is back up, log in again and run:
+
+     ```bash
+     sudo supervisorctl status app
+     curl localhost:8081/health
+     ```
 8. Get `output/profile_card.png` onto the computer you use for GitHub (any method).
 9. Open an issue in this repo using the **Beta application** form.
    Attach your profile card. Then run the command below and paste its output into the
