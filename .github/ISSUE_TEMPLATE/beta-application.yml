@@ -25,7 +25,6 @@ body:
     attributes:
       label: Supervisord log
       description: Run `sudo tail /var/log/supervisor/supervisord.log` and paste the output, copied from your terminal.
-      render: text
     validations:
       required: true
   - type: textarea
