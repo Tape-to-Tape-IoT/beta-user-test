@@ -1,6 +1,6 @@
 name: Beta application
 description: Submit your beta challenge result
-title: "[Beta] <your Discord username>"
+title: "[Candidate] <your Discord username>"
 labels: ["beta-application"]
 body:
   - type: markdown
