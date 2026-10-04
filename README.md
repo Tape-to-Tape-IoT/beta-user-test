@@ -1,13 +1,56 @@
 # Beta challenge
 
-Thanks for applying! This takes about an hour. Searching the web is allowed and expected.
+Thanks for applying! 
 
-**You need:** a Raspberry Pi running Raspberry Pi OS with internet access, a GitHub account,
-and the personal API key we sent you. Work over SSH or with a keyboard and screen, your choice.
+We are looking for users that can help us test the upcoming NHL-LED-SCOREBOARD-V2. If you are selected, you will have to install, configure and run it from a command line interface (CLI). No setup tool, no Raspberry Pi image with everything pre-installed.
+
+If you are still interested, keep reading. For the others, we will be working on those in the coming months and do our best to get everything up and running as conveniently as possible.
+
+This challenge should not take more than an hour.
+
+We expect you to do this on your own without any help from anyone. Searching the web and AI is allowed.
+
+## Selection process
+
+This challenge will run for a week (END date TBD). At the end, we will look at the results and handpick a few of you to get into the closed beta. We are looking for different hardware setups (as long as the resolution is 64x32 or above and you run on a multi-core Raspberry Pi (no Pi 1 or Pi Zero W).
+
+## Warning
+We reserve the right to remove you from the closed beta at any time.
+
+## Expectations
+- You are capable of using a command line interface (CLI)
+- You are able to connect to your Raspberry Pi using SSH
+- You have a GitHub account and know how to open and fill in GitHub issues
+- You are able to think things through and find solutions on your own (Google search or AI allowed).
+- You are capable of following instructions and respecting established rules.
+
+## Requirements
+**You need:**
+
+- An eligible Raspberry Pi (see below) running Raspberry Pi OS with internet access
+- A computer that can reach the Pi over SSH
+- A GitHub account
+- The personal API key we sent you
+
+These instructions assume you work from your computer, connected to the Pi over SSH.
+
+**Eligible Raspberry Pi models** (any multi-core Pi):
+
+- Raspberry Pi Zero 2 W
+- Raspberry Pi 2 Model B
+- Raspberry Pi 3 Model B, 3 Model B+ and 3 Model A+
+- Raspberry Pi 4 Model B
+- Raspberry Pi 5
+
+**Not eligible** (single-core): Raspberry Pi 1 (A, B, A+, B+), Pi Zero, Pi Zero W and
+Compute Module 1.
 
 **Never post your API key anywhere**, including in your issue.
 
 ## Steps
+
+Run every command in an SSH session on your Pi, unless a step says to run it on your
+computer.
 
 1. Clone this repository into `~/app` on your Pi:
 
