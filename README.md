@@ -28,7 +28,7 @@ and the personal API key we sent you. Work over SSH or with a keyboard and scree
 
    If `python3 -m venv` fails, install it first with `sudo apt install python3-venv`.
    The venv's Python is `~/app/venv/bin/python3`; `source venv/bin/activate` makes `python3`
-   point to it in your current terminal only.
+   point to it in your current SSH session only.
 3. Create your own config from the example:
 
    ```bash
@@ -113,13 +113,25 @@ and the personal API key we sent you. Work over SSH or with a keyboard and scree
      sudo reboot
      ```
 
-     Once the Pi is back up, log in again and run:
+     Your SSH session will drop. Once the Pi is back up, reconnect and run:
 
      ```bash
      sudo supervisorctl status app
      curl localhost:8081/health
      ```
-8. Get `output/profile_card.png` onto the computer you use for GitHub (any method).
+8. Download your profile card from your browser:
+   - Find the Pi's IP address:
+
+     ```bash
+     hostname -I
+     ```
+
+     Use the first address it prints (for example `192.168.1.42`).
+   - Open `http://<pi-address>:8081` in your browser, replacing `<pi-address>` with that
+     address, and click **Download profile card**.
+
+   If you set a hostname when you installed Raspberry Pi OS, you can use it instead of the
+   IP address, for example `http://raspberrypi.local:8081`.
 9. Open an issue in this repo using the **Beta application** form.
    Attach your profile card. Then run the command below and paste its output into the
    **Supervisord log** field:

@@ -10,7 +10,7 @@ Build a small challenge app that beta candidates install on their own Raspberry 
 
 What the challenge tests, in the order the candidate meets it:
 
-1. Access a Raspberry Pi (SSH or keyboard and screen, both fine) and clone a GitHub repo.
+1. Access a Raspberry Pi over SSH from their computer and clone a GitHub repo.
 2. Install a Python dependency on a modern Pi OS.
 3. Copy and edit a config file from the CLI.
 4. Write a supervisord program entry from scratch: autostart, autorestart, log file.
@@ -297,7 +297,7 @@ Ship this text as `README.md`. It says what to achieve, not which commands to ty
 Thanks for applying! This takes about an hour. Searching the web is allowed and expected.
 
 \*\*You need:\*\* a Raspberry Pi running Raspberry Pi OS with internet access, a GitHub account,
-and the personal API key we sent you. Work over SSH or with a keyboard and screen, your choice.
+and the personal API key we sent you. These instructions assume you work from your computer, connected to the Pi over SSH.
 
 \*\*Never post your API key anywhere\*\*, including in your issue.
 
@@ -323,7 +323,19 @@ and the personal API key we sent you. Work over SSH or with a keyboard and scree
 7. Prove it recovers:
    - find the app's process ID and `kill` it; confirm it comes back
    - reboot the Pi; confirm it comes back
-8. Get `output/profile\_card.png` onto the computer you use for GitHub (any method).
+8. Download your profile card from your browser:
+   - Find the Pi's IP address:
+
+     ```bash
+     hostname -I
+     ```
+
+     Use the first address it prints (for example `192.168.1.42`).
+   - Open `http://<pi-address>:8081` in your browser, replacing `<pi-address>` with that
+     address, and click **Download profile card**.
+
+   If you set a hostname when you installed Raspberry Pi OS, you can use it instead of the
+   IP address, for example `http://raspberrypi.local:8081`.
 9. Open an issue in this repo using the \*\*Beta application\*\* form.
    Attach your profile card. Then run `sudo tail /var/log/supervisor/supervisord.log`
    and paste its output into the \*\*Supervisord log\*\* field.
