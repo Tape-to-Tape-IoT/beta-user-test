@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A challenge app that beta candidates clone onto their own Raspberry Pi, configure, and run under
 supervisord. It renders a 1200×450 profile card (`output/profile_card.png`) and serves it on
-port 8081. The candidate then posts the card and the app log in a GitHub issue
+port 8081. The candidate then posts the card and the tail of their supervisord log in a GitHub issue
 (`.github/ISSUE_TEMPLATE/beta-application.yml`).
 
 - `PLAN.md` is the build spec and the source of truth for behavior, log wording, card layout and
@@ -73,8 +73,8 @@ Invariants to keep:
   test in README.md only passes with it.
 - **The `api_key` value never reaches the log, the card, or the `/` page.** Log it only as
   `api_key=set` / `api_key=missing`. `tests/test_app.py` checks this with a marker key.
-- A normal start logs about 10 lines. Log wording is spec'd in PLAN.md, and candidates paste
-  these lines into their issue.
+- A normal start logs about 10 lines. Log wording is spec'd in PLAN.md, and candidates read
+  these lines to troubleshoot.
 
 ## Tests
 

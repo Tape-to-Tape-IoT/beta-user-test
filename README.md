@@ -49,12 +49,17 @@ and the personal API key we sent you. Work over SSH or with a keyboard and scree
    - reboot the Pi; confirm it comes back
 8. Get `output/profile_card.png` onto the computer you use for GitHub (any method).
 9. Open an issue in this repo using the **Beta application** form.
-   Attach your profile card and paste the full app log, copied from your terminal.
+   Attach your profile card. Then run the command below and paste its output into the
+   **Supervisord log** field:
+
+   ```bash
+   sudo tail /var/log/supervisor/supervisord.log
+   ```
 
 ## Done when
 
 - [ ] Your issue shows your profile card
-- [ ] Your log shows at least 3 starts, including one after a reboot
+- [ ] Your supervisord log shows `app` entering the `RUNNING` state after the reboot
 - [ ] No API key appears anywhere in your issue
 
 ## Cleaning up (optional)

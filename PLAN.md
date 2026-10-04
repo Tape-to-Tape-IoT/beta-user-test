@@ -4,7 +4,7 @@ Sep 30, 2026 · @Mighty Jay Jay
 
 ## Purpose
 
-Build a small challenge app that beta candidates install on their own Raspberry Pi, configure from the CLI, run under supervisord, and prove it with a generated profile card plus their app log in a GitHub issue.
+Build a small challenge app that beta candidates install on their own Raspberry Pi, configure from the CLI, run under supervisord, and prove it with a generated profile card plus the tail of their supervisord log in a GitHub issue.
 
 **For Claude (the builder):** implement everything in this spec. Where the spec leaves a detail open, pick the simplest option that works on every Raspberry Pi model and note the choice in the README. Do not add features that are not listed here.
 
@@ -241,7 +241,7 @@ Saved as `output/profile\_card.png`, overwritten on every start.
 
 ## Log
 
-The app logs to **stdout only**, and the candidate's supervisord config sends it to `/var/log/app/app.log`. The candidate copies the log from the terminal and pastes it into the issue, so every start must be short, readable and free of secrets.
+The app logs to **stdout only**, and the candidate's supervisord config sends it to `/var/log/app/app.log`. The candidate reads this log in the terminal to troubleshoot, so every start must be short, readable and free of secrets. The log pasted into the issue is supervisord's own (`sudo tail /var/log/supervisor/supervisord.log`), not this one.
 
 ### Rules
 
@@ -325,12 +325,13 @@ and the personal API key we sent you. Work over SSH or with a keyboard and scree
    - reboot the Pi; confirm it comes back
 8. Get `output/profile\_card.png` onto the computer you use for GitHub (any method).
 9. Open an issue in this repo using the \*\*Beta application\*\* form.
-   Attach your profile card and paste the full app log, copied from your terminal.
+   Attach your profile card. Then run `sudo tail /var/log/supervisor/supervisord.log`
+   and paste its output into the \*\*Supervisord log\*\* field.
 
 ## Done when
 
 - \[ ] Your issue shows your profile card
-- \[ ] Your log shows at least 3 starts, including one after a reboot
+- \[ ] Your supervisord log shows `app` entering the `RUNNING` state after the reboot
 - \[ ] No API key appears anywhere in your issue
 
 ## Cleaning up (optional)
@@ -370,8 +371,8 @@ body:
   - type: textarea
     id: log
     attributes:
-      label: App log
-      description: Paste the full contents of /var/log/app/app.log, copied from your terminal.
+      label: Supervisord log
+      description: Run `sudo tail /var/log/supervisor/supervisord.log` and paste the output, copied from your terminal.
       render: text
     validations:
       required: true

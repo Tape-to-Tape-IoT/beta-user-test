@@ -23,8 +23,8 @@ body:
   - type: textarea
     id: log
     attributes:
-      label: App log
-      description: Paste the full contents of /var/log/app/app.log, copied from your terminal.
+      label: Supervisord log
+      description: Run `sudo tail /var/log/supervisor/supervisord.log` and paste the output, copied from your terminal.
       render: text
     validations:
       required: true
