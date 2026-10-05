@@ -12,7 +12,7 @@ We expect you to do this on your own without any help from anyone. Searching the
 
 ## Selection process
 
-This challenge will run for a week (END date TBD). At the end, we will look at the results and handpick a few of you to get into the closed beta. We are looking for different hardware setups (as long as the resolution is 64x32 or above and you run on a multi-core Raspberry Pi (no Pi 1 or Pi Zero W).
+This challenge will run for a week (END date TBD). At the end, we will look at the results and handpick a few of you to get into the closed beta. We are looking for different hardware setups (as long as the resolution is 64x32 or above and use a multi-core Raspberry Pi (no Pi 1 or Pi Zero W).
 
 ## Warning
 We reserve the right to remove you from the closed beta at any time.
